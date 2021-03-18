@@ -4,7 +4,7 @@ stackbitVersion: ~0.3.0
 ssgName: gatsby
 
 # Use node version 12
-nodeVersion: 12
+nodeVersion: 14
 
 # The site has no data files (json, yaml, .etc)
 dataDir: null
