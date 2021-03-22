@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const features = data.allFeaturesJson.nodes;
 
   if (posts.length === 0) {
     return (
@@ -59,6 +60,14 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
+        <div>
+        {features.map(feature => (
+            <div key={feature.id} className="feature">
+                <h2 className="feature-title">{feature.title}</h2>
+                <div className="feature-content">{feature.description}</div>
+            </div>
+        ))}
+        </div>
     </Layout>
   )
 }
@@ -85,5 +94,11 @@ export const pageQuery = graphql`
         }
       }
     }
+    allFeaturesJson {
+        nodes {
+          id
+          title
+        }
+      }
   }
 `
